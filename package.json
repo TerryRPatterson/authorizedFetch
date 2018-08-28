@@ -1,0 +1,15 @@
+{
+  "name": "authorizedfetch",
+  "version": "0.0.1",
+  "description": "A wrapper around fetch which automatically includes a authorization header, and handles 401 errors.",
+  "main": "authFetch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Terry Patterson Terryp@wegrok.net Terryp.org",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-google": "^0.9.1"
+  }
+}
