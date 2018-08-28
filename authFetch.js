@@ -22,7 +22,3 @@ let authFetch = async (url, fetchObject={}) => {
     }
     return response;
 };
-
-//exports is used by npm
-// eslint-disable-next-line
-exports.authFetch = authFetch;

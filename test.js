@@ -1,4 +1,3 @@
 
-let {authFetch} = require("./authFetch");
 
-authFetch({url:"httpstatus.us/200"});
+console.log(authFetch("https://httpstat.us/200"));
