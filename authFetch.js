@@ -1,6 +1,8 @@
 
+
 let authFailure = () => {
-    localStorage.setItem("authorization",null);
+    localStorage.setItem("authorization","null");
+    return false;
 };
 
 let getUserAuthorization = () => {
@@ -15,14 +17,10 @@ let authFetch = async (url, fetchObject={}) => {
     let fetchHeader = {...fetchObject["headers"], ...authHeaders};
 
     let authedFetchObject = {...fetchObject, headers:fetchHeader};
-
     let response =  await fetch(url, authedFetchObject);
     if (response.status === 401) {
-        authFailure();
+        return authFailure();
     }
     return response;
-};
 
-//exports is used by npm
-// eslint-disable-next-line
-exports.authFetch = authFetch;
+};
