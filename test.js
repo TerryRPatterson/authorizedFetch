@@ -41,7 +41,7 @@ let runTests = () => {
 
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
-        navigator.serviceWorker.register("/testingPage/serviceWorker.js")
+        navigator.serviceWorker.register("serviceWorker.js")
             .then(() => {
             // Registration was successful
                 serviceWorker.textContent = "ServiceWorker registration"+
