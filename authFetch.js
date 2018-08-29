@@ -8,6 +8,11 @@ let getUserAuthorization = () => {
     return window.localStorage.getItem("authorization");
 };
 
+let configure = (userGetUserAuthorization, userAuthFailure) => {
+    authFailure = userAuthFailure;
+    getUserAuthorization = userGetUserAuthorization;
+};
+
 let authFetch = async (url, fetchObject={}) => {
     let userAuth = getUserAuthorization();
     let authHeaders = {
@@ -23,3 +28,7 @@ let authFetch = async (url, fetchObject={}) => {
     return response;
 
 };
+
+let exportObject = {fetch:authFetch, configure};
+
+export default exportObject;
