@@ -1,8 +1,8 @@
 Authorized Fetch is a wrapper around the fetch API which will automatically
-bundle a Bearer token into the call and run a function upon receiving a 401
-unauthorized.
+bundle a Bearer token into the call and run a function upon receiving a status
+401 unauthorized.
 
-
+```
 This module exports:
 
 {
@@ -14,7 +14,7 @@ This module exports:
     authFailure: function that is called when a 401 is received.
 
 
-    
+
   fetch: function accept two parameters:
 
     URL: String of the URL to fetch from.
@@ -24,3 +24,4 @@ This module exports:
     getUserAuthorization. This will not overwrite any authorization
     header you pass to it.
 }
+```
