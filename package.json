@@ -1,13 +1,21 @@
 {
   "name": "authorizedfetch",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "A wrapper around fetch which automatically includes a authorization header, and handles 401 errors.",
   "main": "authFetch.js",
   "scripts": {
-    "test": "echo \"Please use test.html to test the functionality of the module\""
+    "test": "echo \"Please use index.html to test the functionality of the module\""
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/TerryRPatterson/authorizedFetch"
   },
   "author": "Terry Patterson Terryp@wegrok.net Terryp.org",
   "license": "Apache-2.0",
+  "bugs":{
+    "url":"https://github.com/TerryRPatterson/authorizedFetch/issues"
+  },
+  "homepage":"https://github.com/TerryRPatterson/authorizedFetch",
   "devDependencies": {
     "eslint": "^5.4.0",
     "eslint-config-google": "^0.9.1"
