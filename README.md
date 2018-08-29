@@ -30,7 +30,9 @@ If you are using a bundler like webpack you can install this module by:
 npm install authorizedfetch
 ```
 Then import the module in any file using the authorized fetch command. The file
- extension may be required depending on the bundler;
+ extension may be required depending on the bundler.
+
+ 
 ```javascript
 import any name here from "authorizedfetch";
 ```
@@ -40,6 +42,7 @@ If you are not using a bundler your main script tag should be label type module.
 
 
 Example:
+
 ```
 <script src="index.js" type="module"></script>
 ```
