@@ -9,8 +9,12 @@ let getUserAuthorization = () => {
 };
 
 let configure = (userGetUserAuthorization, userAuthFailure) => {
-    authFailure = userAuthFailure;
-    getUserAuthorization = userGetUserAuthorization;
+    if (typeof userAuthFailure === "function") {
+        authFailure = userAuthFailure;
+    }
+    if (typeof getUserAuthorization === "function") {
+        getUserAuthorization = userGetUserAuthorization;
+    }
 };
 
 let authFetch = async (url, fetchObject={}) => {
