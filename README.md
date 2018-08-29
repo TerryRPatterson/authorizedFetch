@@ -29,17 +29,27 @@ If you are using a bundler like webpack you can install this module by:
 ```bash
 npm install authorizedfetch
 ```
-Then import the module in any file using the authorized fetch command.
+Then import the module in any file using the authorized fetch command. The file
+ extension may be required depending on the bundler;
 ```javascript
-import {any name} from "authorizedfetch";
+import any name here from "authorizedfetch";
 ```
 
 
-Or if you are not using a bundler download one of the releases from:
-<https://github.com/TerryRPatterson/authorizedFetch/releases>
+If you are not using a bundler your main script tag should be label type module.
 
 
-and load it using a script tag.
+Example:
+```
+<script src="index.js" type="module"></script>
+```
 
 
+Then the module can be imported  just like before, but  you must include a file
+extension
+
+
+```javascript
+import any name here from "authfetch.js";
+```
 Make sure to run configure before using it.

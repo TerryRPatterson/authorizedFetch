@@ -1,4 +1,3 @@
-
 let serviceWorker = document.getElementById("ServiceWorker");
 let test200 = document.getElementById("Test200");
 let test401 = document.getElementById("Test401");
@@ -42,7 +41,7 @@ let runTests = () => {
 
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
-        navigator.serviceWorker.register("/serviceWorker.js")
+        navigator.serviceWorker.register("/testingPage/serviceWorker.js")
             .then(() => {
             // Registration was successful
                 serviceWorker.textContent = "ServiceWorker registration"+
