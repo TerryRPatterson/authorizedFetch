@@ -2,9 +2,9 @@ Authorized Fetch is a wrapper around the fetch API which will automatically
 bundle a Bearer token into the call and run a function upon receiving a status
 401 unauthorized.
 
-```
-This module exports:
 
+This module exports:
+```
 {
 
   configure: function accepts two parameters:
@@ -25,3 +25,21 @@ This module exports:
     header you pass to it.
 }
 ```
+If you are using a bundler like webpack you can install this module by:
+```bash
+npm install authorizedfetch
+```
+Then import the module in any file using the authorized fetch command.
+```javascript
+import {any name} from "authorizedfetch";
+```
+
+
+Or if you are not using a bundler download one of the releases from:
+<https://github.com/TerryRPatterson/authorizedFetch/releases>
+
+
+and load it using a script tag.
+
+
+Make sure to run configure before using it.
