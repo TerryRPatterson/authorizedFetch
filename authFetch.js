@@ -27,6 +27,7 @@ let configure = (userGetUserAuthorization, userAuthFailure) => {
 };
 
 let authFetch = async (url, fetchObject={}) => {
+
     let userAuth = getUserAuthorization();
     let authHeaders = {
         authorization: `Bearer ${userAuth}`

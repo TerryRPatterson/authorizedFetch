@@ -1,44 +1,80 @@
 import auth from "/authFetch.js";
 
+//getting all dom elements
 let serviceWorker = document.getElementById("ServiceWorker");
-let test200 = document.getElementById("Test200");
-let test401 = document.getElementById("Test401");
-let test500 = document.getElementById("Test500");
+let tests = document.getElementById("tests");
 
-test200.textContent = "Testing 200 response not run.";
-test401.textContent = "Testing 401 response not run.";
-test500.textContent = "Testing other response codes not run.";
+//Setting up all sections
 serviceWorker.textContent = "Service worker has not loaded";
 
-let runTests = () => {
-    auth.fetch("/status/200").then((test200Response) => {
-        if (test200Response.status === 200) {
-            test200.textContent = "200 response passed";
-        }
-        else {
-            test200.textContent = "200 response failed";
-        }
-    });
+let runTest = async (name, code, evaluateOutput) => {
     localStorage.setItem("authorization","testuser");
 
-    auth.fetch("/status/401").then((test401Response) => {
-        if (test401Response === false &&
-        localStorage.getItem("authorization") === "null") {
-            test401.textContent = "401 response passed";
-        }
-        else {
-            test401.textContent = "401 response failed";
-        }
-    });
+    let element = document.createElement("p");
+    element.textContent = `Test: ${name} Status: Running`;
+    tests.appendChild(element);
 
-    auth.fetch("/status/500").then((test500Response) => {
-        if (test500Response === "500") {
-            test500.textContent = "Testing other responses passed";
-        }
-        else {
-            test500.textContent = "Other responses failed";
-        }
-    });
+    let response = await auth.fetch(`/status/${code}`);
+    let responseEvaluation = evaluateOutput(response);
+
+    if (responseEvaluation === true) {
+        element.textContent = `Test: ${name} status: passed`;
+    }
+    else {
+        element.textContent = `Test: ${name} status: failed`;
+    }
+};
+
+//setting up functions used in configration path 1
+let getUserAuthorization = () => {
+    return localStorage.getItem("authorizationConfig");
+};
+
+let authFailure = () => {
+    localStorage.setItem("authorizationConfig","null");
+    return "Authentication Failed Configed";
+};
+
+let evaluate200 = (response) => {
+    if (response.status === 200) {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+};
+
+let evaluate401 = (response) => {
+    if (response === false &&
+        localStorage.getItem("authorization") === "null") {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+
+let evaluate401Configed = (response) => {
+    if (response === "Authentication Failed Configed" &&
+        localStorage.getItem("authorizationConfig") === "null") {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+
+let runTests = async () => {
+    runTest("Standard 200",200,evaluate200);
+    runTest("Standard 401", 401, evaluate401);
+
+    auth.configure(getUserAuthorization, authFailure);
+    localStorage.setItem("authorizationConfig", "testuser");
+    runTest("Standard 200",200,evaluate200);
+    runTest("Standard 401", 401, evaluate401Configed);
+
+
 };
 
 if ("serviceWorker" in navigator) {
