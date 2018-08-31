@@ -9,20 +9,13 @@ let getUserAuthorization = () => {
 };
 
 let configure = (userGetUserAuthorization, userAuthFailure) => {
-    if (typeof userAuthFailure === "function") {
+    if (typeof userAuthFailure === "function" &&
+        typeof userGetUserAuthorization === "function") {
         authFailure = userAuthFailure;
-    }
-    if (typeof userGetUserAuthorization === "function") {
         getUserAuthorization = userGetUserAuthorization;
     }
-    if (typeof userGetUserAuthorization === "object") {
-        let configurationObject = userGetUserAuthorization;
-        if (typeof configurationObject.getUserAuthorization === "function") {
-            getUserAuthorization = configurationObject.getUserAuthorization;
-        }
-        if (typeof configurationObject.authFailure === "function") {
-            authFailure = configurationObject.authFailure;
-        }
+    else {
+        throw new TypeError("Configure accepts two functions");
     }
 };
 
