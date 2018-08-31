@@ -1,6 +1,6 @@
 {
   "name": "authorizedfetch",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A wrapper around fetch which automatically includes a authorization header, and handles 401 errors.",
   "main": "authFetch.js",
   "scripts": {
