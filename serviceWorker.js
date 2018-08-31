@@ -2,6 +2,11 @@ self.addEventListener("install", (event) => {
     event.waitUntil(self.skipWaiting());
 });
 
+self.addEventListener("activate", function(event) {
+    // Claim any clients immediately, so that the page will be under SW control without reloading.
+    event.waitUntil(self.clients.claim());
+});
+
 self.addEventListener("fetch", (fetchObject) => {
     let {request:{url}} = fetchObject;
 

@@ -8,7 +8,19 @@ let getUserAuthorization = () => {
     return window.localStorage.getItem("authorization");
 };
 
+let configure = (userGetUserAuthorization, userAuthFailure) => {
+    if (typeof userAuthFailure === "function" &&
+        typeof userGetUserAuthorization === "function") {
+        authFailure = userAuthFailure;
+        getUserAuthorization = userGetUserAuthorization;
+    }
+    else {
+        throw new TypeError("Configure accepts two functions");
+    }
+};
+
 let authFetch = async (url, fetchObject={}) => {
+
     let userAuth = getUserAuthorization();
     let authHeaders = {
         authorization: `Bearer ${userAuth}`
@@ -23,3 +35,7 @@ let authFetch = async (url, fetchObject={}) => {
     return response;
 
 };
+
+let exportObject = {fetch:authFetch, configure};
+
+export default exportObject;
